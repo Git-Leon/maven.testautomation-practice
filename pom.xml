@@ -22,12 +22,28 @@
     </build>
 
 
+    <repositories>
+        <repository>
+            <id>git-leon-utils</id>
+            <url>https://packagecloud.io/git-leon/utils/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
+
     <dependencies>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <groupId>com.github.git-leon</groupId>
+            <artifactId>leonium</artifactId>
+            <version>1.5</version>
         </dependency>
+
 
         <dependency>
             <groupId>junit</groupId>

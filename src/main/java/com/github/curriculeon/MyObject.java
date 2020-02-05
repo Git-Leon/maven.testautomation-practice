@@ -1,18 +1,26 @@
 package com.github.curriculeon;
 
+import com.git_leon.leonium.browsertools.browserhandler.BrowserHandler;
+import com.git_leon.leonium.browsertools.factories.BrowserHandlerFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class MyObject implements Runnable {
     public void run() {
+        WebDriver driver = BrowserHandlerFactory.FIREFOX.getDriver();
         // declaration and instantiation of objects/variables
-        System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
-        WebDriver driver = new FirefoxDriver();
+//        System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
+//        WebDriver driver = new FirefoxDriver();
         //comment the above 2 lines and uncomment below 2 lines to use Chrome
-        //System.setProperty("webdriver.chrome.driver","G:\\chromedriver.exe");
-        //WebDriver driver = new ChromeDriver();
+//        System.setProperty("webdriver.chrome.driver","G:\\chromedriver.exe");
+//        WebDriver driver = new ChromeDriver();
 
-        String baseUrl = "http://demo.guru99.com/test/newtours/";
+        BrowserHandler browser = BrowserHandlerFactory.FIREFOX.getBrowserHandler();
+
+        String baseUrl = "http://automationpractice.com/index.php";
         String expectedTitle = "Welcome: Mercury Tours";
         String actualTitle = "";
 
@@ -21,6 +29,11 @@ public class MyObject implements Runnable {
 
         // get the actual value of the title
         actualTitle = driver.getTitle();
+        String searchQueryTopId  = "search_query_top";
+        WebElement we = driver.findElement(By.id(searchQueryTopId));
+
+        we.sendKeys("shirt");
+        we.submit();
 
         /*
          * compare the actual title of the page with the expected one and print
